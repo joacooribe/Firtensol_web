@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl } from '../i18n/utils';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="FIT - Firtensol Independent Testing. Líderes en Control de Calidad y Análisis Químicos." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | FIT</title>
+	</head>
+	<body>
+		<slot />
+		
+		<script>
+			import Lenis from 'lenis';
+
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+				orientation: 'vertical',
+				gestureOrientation: 'vertical',
+				smoothWheel: true,
+				wheelMultiplier: 1,
+				smoothTouch: false,
+				touchMultiplier: 2,
+				infinite: false,
+			});
+
+			function raf(time: number) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+		</script>
+	</body>
+</html>
