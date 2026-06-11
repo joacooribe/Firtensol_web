@@ -37,34 +37,39 @@ export const Services: React.FC<Props> = ({ lang }) => {
                 className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-slate-100 flex flex-col h-full group"
               >
                 <div className="relative h-48 -mt-10 -mx-10 mb-8 overflow-hidden rounded-t-2xl">
-                  <img 
-                    src={serviceKey === 'qualityControl' ? '/img/control de calidad.jpeg' : 
-                         serviceKey === 'chemicalAnalysis' ? '/img/analisis quimico.jpeg' : 
-                         '/img/fumigacion.jpeg'} 
+                  <img
+                    src={serviceKey === 'qualityControl' ? '/img/control de calidad.webp' :
+                      serviceKey === 'chemicalAnalysis' ? '/img/analisis quimico.webp' :
+                        '/img/fumigacion.webp'}
                     alt={t(`services.${serviceKey}.title`)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
                   <div className="absolute top-4 left-4 w-12 h-12 bg-white/90 backdrop-blur shadow-lg rounded-xl flex items-center justify-center text-primary">
                     {serviceKey === 'qualityControl' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" /></svg>
                     )}
                     {serviceKey === 'chemicalAnalysis' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 2v7.31" /><path d="M14 9.3V1.99" /><path d="M8.5 2h7" /><path d="M14 9.3a6.5 6.5 0 1 1-4 0" /><path d="M5.52 16h12.96" /></svg>
                     )}
                     {serviceKey === 'fumigation' && (
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22h20"/><path d="M7 22v-5"/><path d="M17 22v-5"/><path d="M7 17h10V5a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v12z"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 22h20" /><path d="M7 22v-5" /><path d="M17 22v-5" /><path d="M7 17h10V5a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v12z" /></svg>
                     )}
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-primary mb-4">
+                <h3 className={`text-2xl font-bold text-primary ${serviceKey === 'qualityControl' ? 'mb-1' : 'mb-4'}`}>
                   {t(`services.${serviceKey}.title`)}
                 </h3>
+                {serviceKey === 'qualityControl' && (
+                  <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">
+                    {t('services.qualityControl.subtitle')}
+                  </p>
+                )}
                 <p className="text-slate-600 mb-8 flex-grow leading-relaxed">
                   {t(`services.${serviceKey}.desc`)}
                 </p>
-                
+
                 <div className="pt-6 border-t border-slate-50">
                   <p className="text-sm text-slate-500 italic">
                     {t(`services.${serviceKey}.detail`)}

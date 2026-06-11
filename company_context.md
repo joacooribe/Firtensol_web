@@ -36,7 +36,7 @@ FIT (FIRTENSOL S.A.) es un laboratorio independiente fundado en **2006**, especi
 
 ### 4. Fumigación Profesional
 *   Servicios para embarcaciones y cargas.
-*   Uso de fosfuro de aluminio y bromuro de metilo.
+*   Uso de fosfuro de aluminio.
 *   Certificación internacional de libre de plagas.
 *   Cumplimiento de normativas **ISPM-15**.
 

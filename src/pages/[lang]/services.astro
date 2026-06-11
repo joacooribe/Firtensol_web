@@ -1,101 +1,209 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { Navbar } from '../../components/Navbar';
-import { Footer } from '../../components/Footer';
-import { PageHeader } from '../../components/PageHeader';
-import { useTranslations } from '../../i18n/utils';
+import Layout from "../../layouts/Layout.astro";
+import { Navbar } from "../../components/Navbar";
+import { Footer } from "../../components/Footer";
+import { PageHeader } from "../../components/PageHeader";
+import { useTranslations } from "../../i18n/utils";
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'es' } },
-    { params: { lang: 'en' } },
-  ];
+	return [{ params: { lang: "es" } }, { params: { lang: "en" } }];
 }
 
-const { lang } = Astro.params as { lang: 'es' | 'en' };
+const { lang } = Astro.params as { lang: "es" | "en" };
 const t = useTranslations(lang);
 
-const services = ['qualityControl', 'chemicalAnalysis', 'fumigation'] as const;
+const services = ["qualityControl", "chemicalAnalysis", "fumigation"] as const;
 ---
 
-<Layout title={t('nav.services')}>
+<Layout title={t("nav.services")}>
 	<Navbar client:load lang={lang} />
-	
+
 	<main>
-		<PageHeader 
-			title={t('nav.services')} 
-			subtitle={t('services.subtitle')} 
+		<PageHeader
+			title={t("nav.services")}
+			subtitle={t("services.subtitle")}
 		/>
 
 		<section class="py-24 bg-white">
 			<div class="container mx-auto px-6 space-y-32">
-				{services.map((service, index) => (
-					<div class={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}>
-						<div class="lg:w-1/2">
-							<div class="w-20 h-20 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-8 shadow-sm">
-								{service === 'qualityControl' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+				{
+					services.map((service, index) => (
+						<div
+							class={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-16 items-center`}
+						>
+							<div class="lg:w-1/2">
+								<div class="w-20 h-20 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-8 shadow-sm">
+									{service === "qualityControl" && (
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="40"
+											height="40"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+											<path d="m9 12 2 2 4-4" />
+										</svg>
+									)}
+									{service === "chemicalAnalysis" && (
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="40"
+											height="40"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M10 2v7.31" />
+											<path d="M14 9.3V1.99" />
+											<path d="M8.5 2h7" />
+											<path d="M14 9.3a6.5 6.5 0 1 1-4 0" />
+											<path d="M5.52 16h12.96" />
+										</svg>
+									)}
+									{service === "fumigation" && (
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="40"
+											height="40"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<path d="M2 22h20" />
+											<path d="M7 22v-5" />
+											<path d="M17 22v-5" />
+											<path d="M7 17h10V5a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v12z" />
+										</svg>
+									)}
+								</div>
+								<h2 class={`text-3xl font-heading font-bold text-primary ${service === "qualityControl" ? "mb-1" : "mb-6"}`}>
+									{t(`services.${service}.title`)}
+								</h2>
+								{service === "qualityControl" && (
+									<p class="text-sm font-semibold text-accent uppercase tracking-wider mb-5">
+										{t("services.qualityControl.subtitle")}
+									</p>
 								)}
-								{service === 'chemicalAnalysis' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
-								)}
-								{service === 'fumigation' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M7 22v-5"/><path d="M17 22v-5"/><path d="M7 17h10V5a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v12z"/></svg>
-								)}
+								<p class="text-slate-600 text-lg leading-relaxed mb-8">
+									{t(`services.${service}.detail`)}
+								</p>
+								<ul class="space-y-4">
+									<li class="flex items-start gap-3">
+										<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="12"
+												height="12"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="3"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<polyline points="20 6 9 17 4 12" />
+											</svg>
+										</div>
+										<span class="text-slate-600">
+											Certificación bajo estándares
+											internacionales.
+										</span>
+									</li>
+									<li class="flex items-start gap-3">
+										<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="12"
+												height="12"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="3"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<polyline points="20 6 9 17 4 12" />
+											</svg>
+										</div>
+										<span class="text-slate-600">
+											Personal altamente calificado y con
+											vasta experiencia.
+										</span>
+									</li>
+									<li class="flex items-start gap-3">
+										<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="12"
+												height="12"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="3"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<polyline points="20 6 9 17 4 12" />
+											</svg>
+										</div>
+										<span class="text-slate-600">
+											Resultados rápidos y confiables para
+											sus transacciones.
+										</span>
+									</li>
+								</ul>
 							</div>
-							<h2 class="text-3xl font-heading font-bold text-primary mb-6">{t(`services.${service}.title`)}</h2>
-							<p class="text-slate-600 text-lg leading-relaxed mb-8">
-								{t(`services.${service}.detail`)}
-							</p>
-							<ul class="space-y-4">
-								<li class="flex items-start gap-3">
-									<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-									</div>
-									<span class="text-slate-600">Certificación bajo estándares internacionales.</span>
-								</li>
-								<li class="flex items-start gap-3">
-									<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-									</div>
-									<span class="text-slate-600">Personal altamente calificado y con vasta experiencia.</span>
-								</li>
-								<li class="flex items-start gap-3">
-									<div class="mt-1 w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center text-accent shrink-0">
-										<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-									</div>
-									<span class="text-slate-600">Resultados rápidos y confiables para sus transacciones.</span>
-								</li>
-							</ul>
-						</div>
-						<div class="lg:w-1/2">
-							<div class="bg-slate-100 rounded-3xl aspect-[4/3] overflow-hidden shadow-xl">
-								<img 
-									src={service === 'qualityControl' ? '/img/control de calidad.jpeg' : 
-										 service === 'chemicalAnalysis' ? '/img/analisis quimico.jpeg' : 
-										 '/img/fumigacion.jpeg'} 
-									alt={t(`services.${service}.title`)}
-									class="w-full h-full object-cover"
-								/>
+							<div class="lg:w-1/2">
+								<div class="bg-slate-100 rounded-3xl aspect-[4/3] overflow-hidden shadow-xl">
+									<img
+										src={
+											service === "qualityControl"
+												? "/img/control de calidad.webp"
+												: service === "chemicalAnalysis"
+													? "/img/analisis quimico.webp"
+													: "/img/fumigacion.webp"
+										}
+										alt={t(`services.${service}.title`)}
+										class="w-full h-full object-cover"
+									/>
+								</div>
 							</div>
 						</div>
-					</div>
-				))}
+					))
+				}
 			</div>
 		</section>
 
 		<section class="py-24 bg-primary text-white">
 			<div class="container mx-auto px-6 text-center">
-				<h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">¿Necesita un servicio personalizado?</h2>
+				<h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">
+					¿Necesita un servicio personalizado?
+				</h2>
 				<p class="text-white/70 text-xl max-w-2xl mx-auto mb-12">
-					Nuestro equipo técnico está listo para analizar sus necesidades específicas y brindarle la mejor solución logística y de control.
+					Nuestro equipo técnico está listo para analizar sus
+					necesidades específicas y brindarle la mejor solución
+					logística y de control.
 				</p>
-				<a href={`/${lang}/contact`} class="inline-block px-10 py-5 bg-accent text-white font-bold rounded-xl hover:bg-white hover:text-primary transition-all shadow-xl shadow-accent/20">
-					{t('nav.contact')}
+				<a
+					href={`/${lang}/contact`}
+					class="inline-block px-10 py-5 bg-accent text-white font-bold rounded-xl hover:bg-white hover:text-primary transition-all shadow-xl shadow-accent/20"
+				>
+					{t("nav.contact")}
 				</a>
 			</div>
 		</section>
-		
+
 		<Footer client:visible lang={lang} />
 	</main>
 </Layout>

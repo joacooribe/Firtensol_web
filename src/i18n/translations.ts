@@ -18,7 +18,7 @@ export const translations = {
       fumigation: {
         title: 'Fumigación',
         desc: 'Fumigación de embarcaciones con estándares internacionales de alta calidad.',
-        detail: 'Utilizamos las técnicas más avanzadas y productos aprobados internacionalmente (Fosfuro de Aluminio y Bromuro de Metilo) para garantizar la eliminación completa de plagas.',
+        detail: 'Utilizamos las técnicas más avanzadas y productos aprobados internacionalmente (Fosfuro de Aluminio) para garantizar la eliminación completa de plagas.',
       },
       chemicalAnalysis: {
         title: 'Análisis Químico',
@@ -27,6 +27,7 @@ export const translations = {
       },
       qualityControl: {
         title: 'Control de Calidad',
+        subtitle: 'De granos y minerales',
         desc: 'Certificación neutral de terceros para contratos internacionales.',
         detail: 'Proporcionamos certificaciones imparciales reconocidas internacionalmente, garantizando la transparencia en transacciones comerciales.',
       },
@@ -47,12 +48,16 @@ export const translations = {
         innovation: 'Innovación',
         commitment: 'Compromiso',
       },
-      partners: {
-        title: 'Alianzas Estratégicas',
-        subtitle: 'Vínculos de cooperación recíproca con líderes mundiales',
-        superinspect: 'Superinspect',
-        rmg: 'The Russell Marine Group',
-        trust: 'Trust Control International',
+      certifications: {
+        title: 'Miembros y Certificaciones',
+        subtitle: 'Respaldo y Estandarización Internacional',
+        certificationsTitle: 'Certificaciones',
+        membershipsTitle: 'Membresías',
+        qualityBadge: 'Sistema de Gestión de Calidad',
+        memberBadge: 'Miembro Analista y Superintendente',
+        isoDesc: 'Sistemas de Gestión de Calidad bajo la norma ISO 9001, garantizando la mejora continua y la excelencia operativa.',
+        fosfaDesc: 'Miembro Analista y Superintendente de FOSFA, asegurando la conformidad en inspecciones de aceites, semillas y grasas.',
+        gaftaDesc: 'Miembro Analista y Superintendente de GAFTA, asegurando estándares de comercio internacional de granos y subproductos.',
       }
     },
     contact: {
@@ -111,6 +116,7 @@ export const translations = {
       },
       qualityControl: {
         title: 'Quality Control',
+        subtitle: 'Of grains and minerals',
         desc: 'Neutral third-party certification for international contracts.',
         detail: 'We provide impartial internationally recognized certifications, ensuring transparency in commercial transactions.',
       },
@@ -131,12 +137,16 @@ export const translations = {
         innovation: 'Innovation',
         commitment: 'Commitment',
       },
-      partners: {
-        title: 'Strategic Alliances',
-        subtitle: 'Reciprocal cooperation links with world leaders',
-        superinspect: 'Superinspect',
-        rmg: 'The Russell Marine Group',
-        trust: 'Trust Control International',
+      certifications: {
+        title: 'Memberships & Certifications',
+        subtitle: 'International Support and Standardization',
+        certificationsTitle: 'Certifications',
+        membershipsTitle: 'Memberships',
+        qualityBadge: 'Quality Management System',
+        memberBadge: 'Analyst and Superintendent Member',
+        isoDesc: 'Quality Management Systems under the ISO 9001 standard, guaranteeing continuous improvement and operational excellence.',
+        fosfaDesc: 'FOSFA Analyst and Superintendent Member, ensuring compliance in inspections of oils, seeds, and fats.',
+        gaftaDesc: 'GAFTA Analyst and Superintendent Member, ensuring international trade standards for grains and feed.',
       }
     },
     contact: {

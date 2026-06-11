@@ -27,16 +27,15 @@ export const Navbar: React.FC<Props> = ({ lang }) => {
   const toggleLang = lang === 'es' ? 'en' : 'es';
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white shadow-sm py-3 border-b border-slate-100 ${
-        isScrolled ? 'shadow-lg' : ''
-      }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white shadow-sm py-3 border-b border-slate-100 ${isScrolled ? 'shadow-lg' : ''
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href={`/${lang}`} className="flex items-center gap-3 group">
-          <img 
-            src="/img/fit logo.jpeg" 
-            alt="FIT Logo" 
+          <img
+            src="/img/fit logo.webp"
+            alt="FIT Logo"
             className="h-10 md:h-12 w-auto object-contain rounded-sm"
           />
           <div className="flex flex-col">
@@ -57,7 +56,7 @@ export const Navbar: React.FC<Props> = ({ lang }) => {
               </a>
             ))}
           </nav>
-          
+
           <div className="flex items-center gap-4 ml-4">
             <a
               href={`/${toggleLang}`}
@@ -65,7 +64,7 @@ export const Navbar: React.FC<Props> = ({ lang }) => {
             >
               {toggleLang}
             </a>
-            <a 
+            <a
               href={`/${lang}/contact`}
               className="bg-accent text-white px-7 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-accent/20 active:scale-95"
             >
